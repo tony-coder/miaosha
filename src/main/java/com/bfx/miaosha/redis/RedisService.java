@@ -73,7 +73,43 @@ public class RedisService {
         }
     }
 
+    /**
+     * 增加值
+     *
+     * @param prefix
+     * @param key
+     * @param <T>
+     * @return
+     */
+    private <T> Long incr(KeyPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            String readKey = prefix.getPrefix() + key;
+            return jedis.incr(readKey);
+        } finally {
+            returnToPool(jedis);
+        }
+    }
 
+    /**
+     * 减少值
+     *
+     * @param prefix
+     * @param key
+     * @param <T>
+     * @return
+     */
+    private <T> Long decr(KeyPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            String readKey = prefix.getPrefix() + key;
+            return jedis.decr(readKey);
+        } finally {
+            returnToPool(jedis);
+        }
+    }
 
     private <T> String beanToString(T value) {
         if (value == null) {
