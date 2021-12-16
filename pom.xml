@@ -43,6 +43,17 @@
             <artifactId>spring-boot-starter-log4j</artifactId>
         </dependency>
 
+        <!--commons-codec是Apache开源组织提供的用于摘要运算、编码的包-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.6</version>
+        </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
