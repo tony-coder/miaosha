@@ -26,7 +26,26 @@ public class CodeMsg {
         return code;
     }
 
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     public String getMsg() {
         return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    /**
+     * 填充参数
+     * @param args
+     * @return
+     */
+    public CodeMsg fillArgs(Object... args) {
+        int code = this.code;
+        String message = String.format(this.msg, args);  // msg: "参数校验异常：%s"
+        return new CodeMsg(code, message);
     }
 }
