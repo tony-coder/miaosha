@@ -10,6 +10,7 @@ import com.bfx.miaosha.redis.RedisService;
 import com.bfx.miaosha.result.CodeMsg;
 import com.bfx.miaosha.util.MD5Util;
 import com.bfx.miaosha.util.UUIDUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 @Service
+@Slf4j
 public class MiaoshaUserService {
     public static final String COOKIE_NAME_TOKEN = "token";
     @Resource
@@ -68,6 +70,7 @@ public class MiaoshaUserService {
     private void addCookie(HttpServletResponse response, String token, MiaoshaUser user) {
         // 前缀+token:user
         redisService.set(MiaoshaUserKey.token, token, user);
+        log.info("存入redis: {}", token);
         Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token);
         cookie.setMaxAge(MiaoshaUserKey.token.expireSeconds());
         cookie.setPath("/");
