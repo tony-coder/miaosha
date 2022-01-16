@@ -7,7 +7,7 @@
     <contextName>logback</contextName>
 
     <!-- name的值是变量的名称，value的值时变量定义的值。通过定义的值会被插入到logger上下文中。定义后，可以使“${}”来使用变量。 -->
-    <property name="log.path" value="/var/log/myapp"/>
+    <property name="log.path" value="D:/var/log/myapp"/>
 
     <!--0. 日志格式和颜色渲染 -->
     <!-- 彩色日志依赖的渲染类 -->
@@ -199,11 +199,11 @@
     <springProfile name="dev">
         <root level="info">
             <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="DEBUG_FILE"/>
+            <!--<appender-ref ref="DEBUG_FILE"/>
             <appender-ref ref="INFO_FILE"/>
             <appender-ref ref="WARN_FILE"/>
             <appender-ref ref="ERROR_FILE"/>
-            <appender-ref ref="ALL_FILE"/>
+            <appender-ref ref="ALL_FILE"/>-->
         </root>
         <logger name="com.bfx.miaosha" level="debug"/> <!-- 开发环境, 指定某包日志为debug级 -->
     </springProfile>
@@ -211,11 +211,11 @@
     <springProfile name="test">
         <root level="info">
             <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="DEBUG_FILE"/>
+            <!--<appender-ref ref="DEBUG_FILE"/>
             <appender-ref ref="INFO_FILE"/>
             <appender-ref ref="WARN_FILE"/>
             <appender-ref ref="ERROR_FILE"/>
-            <appender-ref ref="ALL_FILE"/>
+            <appender-ref ref="ALL_FILE"/>-->
         </root>
         <logger name="com.bfx.miaosha" level="info"/> <!-- 测试环境, 指定某包日志为info级 -->
     </springProfile>
@@ -223,11 +223,11 @@
     <springProfile name="pro">
         <root level="info">
             <!-- 生产环境最好不配置console写文件 -->
-            <appender-ref ref="DEBUG_FILE"/>
+            <!--<appender-ref ref="DEBUG_FILE"/>
             <appender-ref ref="INFO_FILE"/>
             <appender-ref ref="WARN_FILE"/>
             <appender-ref ref="ERROR_FILE"/>
-            <appender-ref ref="ALL_FILE"/>
+            <appender-ref ref="ALL_FILE"/>-->
         </root>
         <logger name="com.bfx.miaosha" level="warn"/> <!-- 生产环境, 指定某包日志为warn级 -->
         <logger name="com.bfx.miaosha.controller" level="info"/> <!-- 特定某个类打印info日志, 比如application启动成功后的提示语 -->
