@@ -1,13 +1,11 @@
 package com.bfx.miaosha.redis;
 
-import com.bfx.miaosha.domain.User;
+import com.bfx.miaosha.pojo.domain.User;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

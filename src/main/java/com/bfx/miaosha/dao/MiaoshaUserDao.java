@@ -1,6 +1,6 @@
 package com.bfx.miaosha.dao;
 
-import com.bfx.miaosha.domain.MiaoshaUser;
+import com.bfx.miaosha.pojo.domain.MiaoshaUser;
 import com.bfx.miaosha.mapper.MiaoshaUserMapper;
 import org.springframework.stereotype.Repository;
 

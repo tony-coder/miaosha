@@ -1,6 +1,6 @@
 package com.bfx.miaosha.controller;
 
-import com.bfx.miaosha.domain.LoginVo;
+import com.bfx.miaosha.pojo.vo.LoginVo;
 import com.bfx.miaosha.redis.RedisService;
 import com.bfx.miaosha.result.Result;
 import com.bfx.miaosha.service.MiaoshaUserService;

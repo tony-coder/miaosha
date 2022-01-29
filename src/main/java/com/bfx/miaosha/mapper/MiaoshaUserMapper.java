@@ -1,6 +1,6 @@
 package com.bfx.miaosha.mapper;
 
-import com.bfx.miaosha.domain.MiaoshaUser;
+import com.bfx.miaosha.pojo.domain.MiaoshaUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

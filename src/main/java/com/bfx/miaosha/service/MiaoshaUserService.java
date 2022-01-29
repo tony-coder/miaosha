@@ -2,8 +2,8 @@ package com.bfx.miaosha.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.bfx.miaosha.dao.MiaoshaUserDao;
-import com.bfx.miaosha.domain.LoginVo;
-import com.bfx.miaosha.domain.MiaoshaUser;
+import com.bfx.miaosha.pojo.vo.LoginVo;
+import com.bfx.miaosha.pojo.domain.MiaoshaUser;
 import com.bfx.miaosha.exception.GlobalException;
 import com.bfx.miaosha.redis.MiaoshaUserKey;
 import com.bfx.miaosha.redis.RedisService;
@@ -31,7 +31,7 @@ public class MiaoshaUserService {
         return miaoshaUserDao.getById(id);
     }
 
-    public void login(HttpServletResponse response,LoginVo loginVo) {
+    public void login(HttpServletResponse response, LoginVo loginVo) {
         if (loginVo == null) {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }
