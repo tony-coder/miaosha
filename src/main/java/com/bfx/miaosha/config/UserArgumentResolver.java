@@ -1,7 +1,7 @@
 package com.bfx.miaosha.config;
 
 import com.alibaba.druid.util.StringUtils;
-import com.bfx.miaosha.domain.MiaoshaUser;
+import com.bfx.miaosha.pojo.domain.MiaoshaUser;
 import com.bfx.miaosha.service.MiaoshaUserService;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.bfx.miaosha.domain;
+package com.bfx.miaosha.pojo.domain;
 
 import lombok.*;
 

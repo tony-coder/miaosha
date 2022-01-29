@@ -1,4 +1,4 @@
-package com.bfx.miaosha.domain;
+package com.bfx.miaosha.pojo.vo;
 
 import com.bfx.miaosha.validator.IsMobile;
 import lombok.Data;
