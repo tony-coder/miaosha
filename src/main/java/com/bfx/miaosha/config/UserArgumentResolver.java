@@ -15,6 +15,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 自定参数解析器
+ * ArgumentResovler是springmvc为我们提供的一个处理controller请求参数的扩展点
+ * 直接在相应的controller方法的参数中写一个MiaoshaUser的入参，但是这个入参不是客户端传的，是在我们的一个ArgumentResovler内部解析传入的，解析也就是token拿到MiaoshaUser的过程。当然我们需要使用注解标注MiaoshaUser参数。
+ */
+
 @Service
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Resource
