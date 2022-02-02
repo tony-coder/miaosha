@@ -28,7 +28,7 @@
         left join goods g on mg.goods_id = g.id where g.id = #{goodsId}
     </select>
 
-    <update id="reduceStock" parameterType="java.lang.Long">
+    <update id="reduceStock" parameterType="com.bfx.miaosha.pojo.domain.MiaoshaGoods">
         update miaosha_goods set stock_count = stock_count - 1 where goods_id = #{goodsId}
     </update>
 </mapper>
