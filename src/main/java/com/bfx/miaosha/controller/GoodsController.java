@@ -20,6 +20,13 @@ public class GoodsController {
     @Resource
     private GoodsService goodsService;
 
+    /**
+     * QPS: 1295
+     * 数据量: 5000*10
+     * @param model
+     * @param user
+     * @return
+     */
     @RequestMapping("/to_list")
     public String list(Model model,
 //                       HttpServletResponse response,

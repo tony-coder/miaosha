@@ -13,4 +13,5 @@ public class MiaoshaUser {
     private String head;
     private Date registerDate;
     private Date lastLoginCount;
+    private Integer loginCount;
 }
