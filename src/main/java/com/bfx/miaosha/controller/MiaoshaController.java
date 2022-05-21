@@ -50,7 +50,7 @@ public class MiaoshaController {
             model.addAttribute("errmsg", CodeMsg.MIAO_SHA_OVER.getMsg());
             return "miaosha_fail";
         }
-        // 判断是否已经秒杀到了
+        // 判断是否已经秒杀到2了
         MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(user.getId(), goodsId);
         if (order != null) {
             // 重复下单
