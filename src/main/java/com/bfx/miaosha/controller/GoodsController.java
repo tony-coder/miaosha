@@ -41,6 +41,8 @@ public class GoodsController {
      * 数据量: 5000*10
      * <p>
      * 优化：页面缓存
+     * QPS: 1334
+     * error: 92.36%
      *
      * @param model
      * @param user
