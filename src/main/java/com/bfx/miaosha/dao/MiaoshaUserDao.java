@@ -14,4 +14,8 @@ public class MiaoshaUserDao {
     public MiaoshaUser getById(long id){
         return miaoshaUserMapper.getById(id);
     }
+
+    public void update(MiaoshaUser toBeUpdate){
+        miaoshaUserMapper.update(toBeUpdate);
+    }
 }
