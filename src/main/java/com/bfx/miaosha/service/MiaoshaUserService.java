@@ -27,8 +27,53 @@ public class MiaoshaUserService {
     @Resource
     private RedisService redisService;
 
+    /**
+     * 根据id获取秒杀用户
+     * 对象缓存优化
+     *
+     * @param id
+     * @return
+     */
     public MiaoshaUser getById(long id) {
-        return miaoshaUserDao.getById(id);
+        // 取缓存
+        MiaoshaUser user = redisService.get(MiaoshaUserKey.getById, "" + id, MiaoshaUser.class);
+        if (user != null) {
+            return user;
+        }
+        // 获取数据库
+        user = miaoshaUserDao.getById(id);
+        if (user != null) {
+            redisService.set(MiaoshaUserKey.getById, "" + id, user);
+        }
+        return user;
+    }
+
+    /**
+     * 更新密码
+     * 看到好些人在写更新缓存数据代码时，先删除缓存，然后再更新数据库，而后续的操作会把数据再装载的缓存中。然而，这个是逻辑是错误的。试想，两个并发操作，一个是更新操作，另一个是查询操作，更新操作删除缓存后，查询操作没有命中缓存，先把老数据读出来后放到缓存中，然后更新操作更新了数据库。于是，在缓存中的数据还是老的数据，导致缓存中的数据是脏的，而且还一直这样脏下去了。
+     *
+     * @param token
+     * @param id
+     * @param formPass
+     * @return
+     */
+    public boolean updatePassword(String token, long id, String formPass) {
+        //取user
+        MiaoshaUser user = getById(id);
+        if (user == null) {
+            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+        }
+        //更新数据库
+        MiaoshaUser toBeUpdate = new MiaoshaUser();
+        toBeUpdate.setId(id);
+        toBeUpdate.setPassword(MD5Util.formPassToDbPass(formPass, user.getSalt()));
+        miaoshaUserDao.update(toBeUpdate);
+
+        //处理缓存
+        redisService.delete(MiaoshaUserKey.getById, "" + id);
+        user.setPassword(toBeUpdate.getPassword());
+        redisService.set(MiaoshaUserKey.token, token, user);
+        return true;
     }
 
     public String login(HttpServletResponse response, LoginVo loginVo) {
